@@ -3,7 +3,6 @@
 version = 4
 
 [[package]]
-<<<<<<< HEAD
 name = "ab_glyph"
 version = "0.2.32"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -5924,5 +5923,3 @@ dependencies = [
  "syn 3.0.10",
  "winnow",
 ]
-=======
->>>>>>> c89d6b384add73994c8efafbeab5960fdffb888f
