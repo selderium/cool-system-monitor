@@ -5,7 +5,4 @@ edition = "2024"
 
 [dependencies]
 sysinfo = "0.40.1"
-<<<<<<< HEAD
 slint = "1.18.1"
-=======
->>>>>>> c89d6b384add73994c8efafbeab5960fdffb888f
