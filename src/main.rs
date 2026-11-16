@@ -1,14 +1,15 @@
-use sysinfo::System;
+slint::include_modules!();
 
-fn main() {
-    print_cpu()
-}
+use cool_system_monitor::sys_output::logs;
+use cool_system_monitor::sys_output::print_cpu;
 
-fn print_cpu() {
-    let cores = System::physical_core_count();
+fn main() -> Result<(), slint::PlatformError> {
+    let main_window = MainWindow::new().unwrap();
 
-    match cores {
-        Ok(count) => println!("Physical cores: {}", count),
-        Err(err) => println!("Unable to determine physical core count: {}", err),
-    }
+    logs();
+
+    let print_cpu_u16: u16 = print_cpu() as u16;
+    main_window.set_cores(print_cpu_u16.into());
+
+    main_window.run()
 }
