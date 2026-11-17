@@ -1,15 +1,24 @@
 import { Button, VerticalBox } from "std-widgets.slint";
 
-
 export component MainWindow inherits Window {
 
     width: 400px;
     height: 400px;
 
-    in property <int> cores: 0;
+    in property <int> cpu_cores: 0;
+    in property <int> cpu_usage: 0;
 
     Text {
-        text: "Physical cores: " + root.cores;
+        x: 10px;
+        y: 10px;
+        text: "CPU Usage: " + root.cpu_usage + "%";
+        font-size: 20px;
+    }
+
+    Text {
+        x: 10px;
+        y: 40px;
+        text: "Physical cores: " + root.cpu_cores;
         font-size: 20px;
     }
 }
