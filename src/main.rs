@@ -12,5 +12,9 @@ fn main() -> Result<(), slint::PlatformError> {
     main_window.set_cpu_usage(print_cpu_usage().into());
     main_window.set_cpu_cores(print_phys_cpu().into());
 
+    main_window.on_print_cpu_usage(move || {
+        print_cpu_usage()
+    });
+
     main_window.run()
 }

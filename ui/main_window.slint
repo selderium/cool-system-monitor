@@ -6,7 +6,17 @@ export component MainWindow inherits Window {
     height: 400px;
 
     in property <int> cpu_cores: 0;
-    in property <int> cpu_usage: 0;
+    in-out property <int> cpu_usage: 0;
+
+    callback print_cpu_usage() -> int;
+
+    Timer {
+        interval: 1s;
+        running: true;
+        triggered => {
+            root.cpu_usage = root.print_cpu_usage();
+        }
+    }
 
     Text {
         x: 10px;
