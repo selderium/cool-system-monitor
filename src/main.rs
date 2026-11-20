@@ -1,7 +1,6 @@
 slint::include_modules!();
 
-use cool_system_monitor::sys_output::print_cpu_usage;
-use cool_system_monitor::sys_output::print_phys_cpu;
+use cool_system_monitor::sys_output::{ print_cpu_usage, print_phys_cpu, print_total_ram };
 
 fn main() -> Result<(), slint::PlatformError> {
     let main_window = MainWindow::new().unwrap();
@@ -15,6 +14,8 @@ fn main() -> Result<(), slint::PlatformError> {
     main_window.on_print_cpu_usage(move || {
         print_cpu_usage()
     });
+
+    main_window.set_ram_total((print_total_ram() as i32).into());
 
     main_window.run()
 }

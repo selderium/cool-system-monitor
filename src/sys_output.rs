@@ -10,3 +10,8 @@ pub fn print_cpu_usage() -> i32 {
 pub fn print_phys_cpu() -> i32 {
     System::physical_core_count().unwrap_or(0) as i32
 }
+
+pub fn print_total_ram() -> u64 {
+    let sys = System::new_all().unwrap();
+    System::total_memory(&sys) / 1024 / 1024
+}
