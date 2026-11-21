@@ -13,5 +13,5 @@ pub fn print_phys_cpu() -> i32 {
 
 pub fn print_total_ram() -> u64 {
     let sys = System::new_all().unwrap();
-    System::total_memory(&sys) / 1024 / 1024
+    sys.total_memory() / 1024 / 1024
 }

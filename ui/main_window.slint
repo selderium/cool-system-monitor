@@ -13,7 +13,6 @@ export component MainWindow inherits Window {
 
     Timer {
         interval: 1s;
-        running: true;
         triggered => {
             root.cpu_usage = root.print_cpu_usage();
         }
@@ -29,14 +28,14 @@ export component MainWindow inherits Window {
     Text {
         x: 10px;
         y: 40px;
-        text: "Physical cores: " + root.cpu_cores;
+        text: "Physical CPU cores: " + root.cpu_cores;
         font-size: 20px;
     }
 
     Text {
         x: 10px;
         y: 70px;
-        text: "Memory: " + root.ram_total;
-        font-size: 20px; 
+        text: "Total RAM: " + root.ram_total;
+        font-size: 20px;
     }
 }
