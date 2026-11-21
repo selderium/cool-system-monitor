@@ -1,14 +1,24 @@
+use std::cell::RefCell;
 use sysinfo::System;
 
-pub fn print_cpu_usage() -> i32 {
-    let mut sys = System::new_all().unwrap();
-    sys.refresh_cpu_usage();
+thread_local! {
+    static SYSTEM: RefCell<System> = RefCell::new(System::new_all().unwrap());
+}
 
-    sys.global_cpu_usage() as i32
+pub fn refresh_cpu_usage() {
+    SYSTEM.with_borrow_mut(|sys| sys.refresh_cpu_usage());
 }
 
 pub fn print_phys_cpu() -> i32 {
     System::physical_core_count().unwrap_or(0) as i32
+}
+
+pub fn print_cpu_usage() -> i32 {
+    SYSTEM.with_borrow(|sys| sys.global_cpu_usage() as i32)
+}
+
+pub fn print_cores_usage() -> Vec<i32> {
+    SYSTEM.with_borrow(|sys| sys.cpus().iter().map(|cpu| cpu.usage() as i32).collect())
 }
 
 pub fn print_total_ram() -> u64 {
