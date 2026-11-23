@@ -9,13 +9,16 @@ export component MainWindow inherits Window {
     in property <int> cpu_usage: 0;
     in property <[int]> cores_usage: [];
     in property <int> ram_total: 0;
+    in property <int> ram_available: 0;
+    in property <int> ram_free: 0;
+    in property <int> ram_used: 0;
 
-    callback update_cpu_usage();
+    callback update_stats();
 
     Timer {
         interval: 1s;
         triggered => {
-            root.update_cpu_usage();
+            root.update_stats();
         }
     }
 
@@ -40,6 +43,21 @@ export component MainWindow inherits Window {
 
         Text {
             text: "Total RAM: " + root.ram_total;
+            font-size: 16px;
+        }
+
+        Text {
+            text: "Available RAM: " + root.ram_available;
+            font-size: 16px;
+        }
+
+        Text {
+            text: "Free RAM: " + root.ram_free;
+            font-size: 16px;
+        }
+
+        Text {
+            text: "Used RAM: " + root.ram_used;
             font-size: 16px;
         }
     }
