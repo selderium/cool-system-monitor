@@ -1,8 +1,9 @@
+export { AboutDialog } from "about_dialog.slint";
 import { Button, VerticalBox } from "std-widgets.slint";
 
 export component MainWindow inherits Window {
-
-    width: 400px;
+    
+    width: 500px;
     height: 600px;
 
     in property <int> cpu_cores: 0;
@@ -14,6 +15,15 @@ export component MainWindow inherits Window {
     in property <int> ram_used: 0;
 
     callback update_stats();
+    callback open_about_dialog();
+
+    Button {
+        x: 10px;
+        y: 10px;        
+        text: "About";
+        clicked => { root.open_about_dialog() }
+    }
+
 
     Timer {
         interval: 1s;
@@ -24,7 +34,7 @@ export component MainWindow inherits Window {
 
     VerticalLayout {
         x: 10px;
-        y: 10px;
+        y: 50px;
 
         Text {
             text: "Physical CPU cores: " + root.cpu_cores;
