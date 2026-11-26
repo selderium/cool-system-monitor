@@ -1,0 +1,11 @@
+import { Button, VerticalBox, StandardButton } from "std-widgets.slint";
+
+export component AboutDialog inherits Dialog {
+    min-width: 400px;
+    min-height: 300px;
+    title: "cool-system-monitor";
+    Text {
+        font-size: 15px;
+        text: "Version: 0.1.1\nCompiler: rustc 1.99.1 (58cf8f9c3 2026-10-13)";
+    }
+}
